@@ -1,6 +1,7 @@
 let weaponList = ['Rock' , 'Scissors' , 'Paper']
 
-
+let playerScore = 0
+let computerScore = 0
 
 function playGame(){
 
@@ -21,31 +22,37 @@ function playGame(){
 
     else if (computerChoice === 'Rock' && playerChoice.toUpperCase() === 'PAPER'){
         console.log('You win paper beates rock')
+        playerScore++
     }
 
     else if (computerChoice === 'Rock' && playerChoice.toUpperCase() === 'SCISSORS'){
         console.log('You lose rock beates scissors')
+        computerScore++
     }
 
     else if (computerChoice === 'Paper' && playerChoice.toUpperCase() === 'ROCK'){
         console.log('You lose paper beates rock')
+        computerScore++
     }
 
     else if (computerChoice === 'Paper' && playerChoice.toUpperCase() === 'SCISSORS'){
         console.log('You win rock beates scissors')
+        playerScore++
     }
 
     else if (computerChoice === 'Scissors' && playerChoice.toUpperCase() === 'PAPER'){
         console.log('You lose scissors beates paper')
+        computerScore++
     }
 
     else if (computerChoice === 'Scissors' && playerChoice.toUpperCase() === 'ROCK'){
         console.log('You win rock beates paper')
+        playerScore++
     }
 
     else{
         console.log('Invalid weapon!')
-        playGame
+        playGame()
     }
 
 }
@@ -55,6 +62,20 @@ playGame()
 playGame()
 playGame()
 playGame()
+
+function congratulateWinner(playerScore , computerScore){
+
+    if (computerScore > playerScore) {
+        console.log(`you lose ${computerScore} to ${playerScore}`)
+    }
+
+    if (computerScore < playerScore) {
+        console.log(`you win ${playerScore} to ${computerScore}`)
+    }
+
+}
+
+congratulateWinner(playerScore,computerScore)
 
 
 
