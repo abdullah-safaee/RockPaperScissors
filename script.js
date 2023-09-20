@@ -1,81 +1,95 @@
 let weaponList = ['Rock' , 'Scissors' , 'Paper']
 
-let playerScore = 0
-let computerScore = 0
+let playerScore = (document.querySelector('div.player>span'))
+let computerScore = (document.querySelector('div.computer>span'))
 
-function playGame(){
+console.log(typeof(parseInt(playerScore.textContent)))
 
-    let computerChoice = weaponList[ Math.floor( Math.random() * weaponList.length ) ]
+let rockButton = document.querySelector('button.rock')
+let paperButton = document.querySelector('button.paper')
+let scissorsButton = document.querySelector('button.scissors')
 
-    let playerChoice = prompt('Choose your weapon (Rock Paper Scissors)')
+function compare(playerChoice,computerChoice){
 
-    // tie 
+    let winner
 
-    if (computerChoice.toUpperCase() === playerChoice.toUpperCase()){
-
-        console.log(`tie (${computerChoice} vs ${playerChoice} )`)
-
-        playGame()
+    if (playerChoice === computerChoice){
+        winner = 'none'
+        return winner
     }
 
-    // tie
+    if (playerChoice === 'Rock'){
 
-    else if (computerChoice === 'Rock' && playerChoice.toUpperCase() === 'PAPER'){
-        console.log('You win paper beates rock')
-        playerScore++
+        if (computerChoice === 'Scissors'){
+            winner = 'player'
+            return winner
+        }
+
+        if (computerChoice === 'Paper'){
+            winner = 'computer'
+            return winner
+        }
+
     }
 
-    else if (computerChoice === 'Rock' && playerChoice.toUpperCase() === 'SCISSORS'){
-        console.log('You lose rock beates scissors')
-        computerScore++
+    if (computerChoice === 'Paper'){
+
+        if (playerChoice === 'Scissors'){
+            winner = 'player'
+            return winner
+        }
+
+        if (playerChoice === 'Rock'){
+            winner = 'computer'
+            return winner
+        }
+
     }
 
-    else if (computerChoice === 'Paper' && playerChoice.toUpperCase() === 'ROCK'){
-        console.log('You lose paper beates rock')
-        computerScore++
+    if (computerChoice === 'Scissors'){
+
+        if (playerChoice === 'Rock'){
+            winner = 'player'
+            return winner
+        }
+
+        if (playerChoice === 'Paper'){
+            winner = 'computer'
+            return winner
+        }
+
     }
 
-    else if (computerChoice === 'Paper' && playerChoice.toUpperCase() === 'SCISSORS'){
-        console.log('You win rock beates scissors')
-        playerScore++
+}
+
+
+
+function playRound(button) {
+
+    let playerChoice = button
+    let computerChoice = weaponList[Math.floor(Math.random() * weaponList.length)]
+
+    let winner = compare(playerChoice,computerChoice)
+
+    if (winner === 'player'){
+        playerScore.textContent ++
+        // parseInt(playerScore.textContent) = parseInt(playerScore.textContent) + 1;
     }
 
-    else if (computerChoice === 'Scissors' && playerChoice.toUpperCase() === 'PAPER'){
-        console.log('You lose scissors beates paper')
-        computerScore++
-    }
-
-    else if (computerChoice === 'Scissors' && playerChoice.toUpperCase() === 'ROCK'){
-        console.log('You win rock beates paper')
-        playerScore++
+    if (winner === 'computer'){
+        computerScore.textContent ++
+        // parseInt(computerScore.textContent) = parseInt(computerScore.textContent) + 1;
     }
 
     else{
-        console.log('Invalid weapon!')
-        playGame()
+        
     }
 
 }
 
-playGame()
-playGame()
-playGame()
-playGame()
-playGame()
-
-function congratulateWinner(playerScore , computerScore){
-
-    if (computerScore > playerScore) {
-        console.log(`you lose ${computerScore} to ${playerScore}`)
-    }
-
-    if (computerScore < playerScore) {
-        console.log(`you win ${playerScore} to ${computerScore}`)
-    }
-
-}
-
-congratulateWinner(playerScore,computerScore)
 
 
 
+rockButton.addEventListener('click' , function() {playRound(rockButton.value) })
+paperButton.addEventListener('click' , function() {playRound(paperButton.value) })
+scissorsButton.addEventListener('click' , function() {playRound(scissorsButton.value) })

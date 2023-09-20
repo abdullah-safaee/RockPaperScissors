@@ -1,0 +1,62 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    outline: none;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+/* weapons section */
+
+.weapons{
+    background-color: peachpuff;
+    height: 40vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: flex-start;
+    gap: 2.5em;
+    font-family: sans-serif;
+    flex-wrap: wrap;
+}
+
+.weapons h1{
+    margin-top: 40px;
+    text-align: center;
+    flex-basis: 100%;
+}
+
+.weapons button{
+    border: 2px solid lightskyblue;
+    padding: 10px;
+    border-radius: 10px;
+    flex-basis: 20%;
+    font-size: 1.5em;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* score section */
+
+.score{
+    background-color: lightskyblue;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 50px;
+}
+
+.score div{
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 2em;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+.player{
+    margin-top: 50px;
+}
